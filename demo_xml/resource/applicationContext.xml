@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="classpath:applicationContext-infra.xml"/>
+	
+	<bean id = "task" class="com.app.demo.entities.RescueDemselTask" />
+	<bean id = "gun" class="com.app.demo.entities.Gun" />
+	<bean id = "sword" class="com.app.demo.entities.Sword" />
+	
+	<bean id = "knight" class="com.app.demo.entities.DemselRescuingKnight">
+		<!-- the property need setter method defined in the Class -->
+		<!-- <property id="gun" ref="gun"/>
+		<property id="sword" ref="sword"/>
+		<property id="task" ref="task"/> -->
+		<constructor-arg ref="task"/>
+		<constructor-arg ref="gun"/>
+		<constructor-arg ref="sword"/> 
+	</bean>
+	
+
+</beans>

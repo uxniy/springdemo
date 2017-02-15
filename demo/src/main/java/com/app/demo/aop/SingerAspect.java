@@ -12,7 +12,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class SingerAspect {
-	@Around("execution(* com.app.demo.entities.DemselRescuingKnight.start(..))")
+	//Others: Before, After,AfterThrowing and so on 
+	//the code in the brackets is the pointcut, where you want to weave you aspect
+	//Advice is when and what you want in the aspect. around is when and the method is what
+	//join point is represented for the target method you weave the aspect.
+	@Around("execution(* com.app.demo.entities.Knight.start(..))")
 	public void singing(ProceedingJoinPoint point) throws Throwable{
 		System.out.println("How a brave warrior(Before)!");
 		point.proceed();

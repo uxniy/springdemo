@@ -29,19 +29,19 @@ public class DemselRescuingKnight implements Knight {
 	//solve this problem by add @Qualifier 
 	//or use @Resource(value = "youBeanName") (java version >=1.6) to replace @Autowired
 	//http://qiita.com/KevinFQ/items/20a6d53a5f93e28ab9ef
-	@Autowired @Qualifier(value="gun")
-	private Weapon w1;
+//	@Autowired @Qualifier(value="gun")
+//	private Weapon w1;
 	//Or just use private List<Weapon> wps;
 //	@Autowired
 //	private Weapon gun;
 	
 	//Autowired the same as Inject
-	@Autowired @Qualifier(value="sword")
-	private Weapon w2;
+//	@Autowired @Qualifier(value="sword")
+//	private Weapon w2;
 //	@Autowired
 //	private Weapon sword;
-//	@Autowired
-//	private List<Weapon> wps;
+	@Autowired
+	private List<Weapon> wps;
 	
 	//Something Interesting
 	//if you use constructor and the parameter name as class name, the autowired can be omited
@@ -58,12 +58,12 @@ public class DemselRescuingKnight implements Knight {
 	}
 	
 	@PostConstruct
-	public void beforeInit(){
+	public void postInit(){
 		System.out.println("Warrior appeared");
 	}
 	
 	@PreDestroy
-	public void afterDestroy(){
+	public void preDestroy(){
 		System.out.println("Warrior will go home");
 	}
 	
@@ -75,7 +75,7 @@ public class DemselRescuingKnight implements Knight {
 	}
 	
 	public void checkWeapon(){
-		System.out.println("I have a " + w1.getName() + " and a " + w2.getName());
+		System.out.println("I have a " + wps.get(0).getName() + " and a " + wps.get(1).getName());
 		
 		
 	}

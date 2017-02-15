@@ -40,6 +40,9 @@ public class App
     	
     	Knight knight = ctx.getBean(DemselRescuingKnight.class);
     	knight.start();
+//    	ctx.close();
+    	//register a hook with JVM shutdown, will close this context on JVM shutdown.
+    	//So the beans will be destroyed
     	ctx.registerShutdownHook();
     	
     	
